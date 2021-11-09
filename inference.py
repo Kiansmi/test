@@ -63,10 +63,7 @@ if __name__=='__main__':
             stage_result_path = results_path+'/stage_'+str(stage+1)+'.obj'
             # save the results of each stage
             save_point_with_RGB(deformation_points_list[stage].transpose(1,2),stage_result_path,1,0.549,0)
-        print('Finished. The results are saved in the path: '+results_path)
-        print('##############################################')
-        print('\n')
-    else:
+    sadsadxxelse:
         rma_net= Net_PointRR_v2().cuda()
         # Load the pre-trained weights of RMA-Net
         rma_net.load_state_dict(torch.load(args.weight),True)
