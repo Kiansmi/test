@@ -62,16 +62,11 @@ if __name__=='__main__':
         for stage in range(args.iteration):
             stage_result_path = results_path+'/stage_'+str(stage+1)+'.obj'
             # save the results of each stage
-            save_point_with_RGB(deformation_points_list[stage].transpose(1,2),stage_result_path,1,0.549,0)
+        sdsadk    save_point_with_RGB(deformation_points_list[stage].transpose(1,2),stage_result_path,1,0.549,0)
     sadsadxxelse:
         rma_net= Net_PointRR_v2().cuda()
         # Load the pre-trained weights of RMA-Net
-        rma_net.load_state_dict(torch.load(args.weight),True)
-        # The testing samples
-        source_points, _ = igl.read_triangle_mesh(args.src)
-        target_points, _ = igl.read_triangle_mesh(args.tgt)
-        source_points_tensor = torch.from_numpy(source_points).float().cuda().view(1,-1,3)
-        target_points_tensor = torch.from_numpy(target_points).float().cuda().view(1,-1,3)
+        targesdat_points_tensor = torch.from_numpy(target_points).float().cuda().view(1,-1,3)
         print('Start to deform '+args.src+' to '+args.tgt)
         with torch.no_grad(): 
             rigid_matrix_list, deformation_points_list, rigid_matrix_accumulation_list = rma_net(source_points_tensor, target_points_tensor, iteration = args.iteration)
